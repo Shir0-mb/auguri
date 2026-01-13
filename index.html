@@ -17,21 +17,15 @@
 </head>
 <body>
 
-    <audio id="bg-music" src="canzone.mp3"></audio>
+    <audio id="bg-music" src="canzone.mp3" preload="auto" loop></audio>
 
     <div class="slide active" id="slide0">
         <div class="heart">❤️</div>
         <h1>Ciao scema,<br>Ho una sorpresa per te</h1>
-        <button class="btn" onclick="nextSlide(1)">Iniziamo? ➔</button>
+        <button class="btn" onclick="startExperience()">Iniziamo? ➔</button>
     </div>
 
     <div id="image-slides"></div>
-
-    <div class="slide" id="slide10">
-        <div class="heart">🎵</div>
-        <h1>Starai dormendo probabilmente. Buonanotte o, più probabilmente, buongiorno e buon lavoro per domani (che divertimento aprire al proprio compleanno 😭) con una canzone triste ma carina. Ora ti saluto per davvero 🐻</h1>
-        <button class="btn" onclick="nextSlide(0)">Ricomincia ❤️</button>
-    </div>
 
     <script>
         const testi = [
@@ -43,7 +37,7 @@
             "Ora spero che la tua reazione sia più tipo così ​🔝​",
             "...che così ​😰​",
             "Tanti auguri sfigatella 🫶​",
-            "Oh no ho lasciato la fotocamera accesa 😱​ a domani baby <3"
+            "Starai dormendo probabilmente. Buonanotte o, più probabilmente, buongiorno e buon lavoro per domani (che divertimento aprire al proprio compleanno 😭) con una canzone triste ma carina. Ora ti saluto per davvero 🐻"
         ];
 
         const totalImages = 9;
@@ -57,26 +51,30 @@
                 <img src="${i}.jpg" alt="Foto ${i}">
                 <h1>${testi[i-1]}</h1>
                 <button class="btn" onclick="nextSlide(${i + 1})">
-                    ${i === totalImages ? 'Ultima cosa... ➔' : 'Prossima ➔'}
+                    ${i === totalImages ? 'Rivedi ❤️' : 'Prossima ➔'}
                 </button>
             `;
             container.appendChild(div);
         }
 
+        const audio = document.getElementById('bg-music');
+
+        function startExperience() {
+            // Fa partire la musica al primo click e va alla slide 1
+            audio.play().catch(e => console.log("Audio play blocked"));
+            nextSlide(1);
+        }
+
         function nextSlide(id) {
-            const audio = document.getElementById('bg-music');
+            document.querySelectorAll('.slide').forEach(s => s.classList.remove('active'));
             
-            // Se andiamo alla slide della canzone (la 10)
-            if (id === 10) {
-                audio.play().catch(e => console.log("Audio play prevented"));
-            } 
-            // Se ricominciamo da capo, ferma la musica
-            else if (id === 0) {
+            if (id > totalImages) {
+                // Se finisce, torna alla slide 0 e resetta musica
+                id = 0;
                 audio.pause();
                 audio.currentTime = 0;
             }
-
-            document.querySelectorAll('.slide').forEach(s => s.classList.remove('active'));
+            
             document.getElementById(`slide${id}`).classList.add('active');
         }
     </script>

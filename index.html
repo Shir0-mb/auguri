@@ -10,7 +10,7 @@
         .active { display: flex; animation: fadeIn 0.5s; }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
         img { max-width: 90%; max-height: 55vh; border-radius: 20px; border: 5px solid white; box-shadow: 0 10px 20px rgba(0,0,0,0.1); object-fit: cover; }
-        h1 { color: #ff4d6d; font-size: 1.4rem; margin: 20px 0; line-height: 1.4; padding: 0 10px; }
+        h1 { color: #ff4d6d; font-size: 1.3rem; margin: 15px 0; line-height: 1.4; padding: 0 10px; }
         .btn { background: #ff4d6d; color: white; border: none; padding: 15px 35px; border-radius: 50px; font-size: 1.1rem; font-weight: bold; cursor: pointer; box-shadow: 0 4px 10px rgba(255, 77, 109, 0.3); }
         .heart { font-size: 60px; margin-bottom: 10px; }
     </style>
@@ -19,26 +19,26 @@
 
     <div class="slide active" id="slide0">
         <div class="heart">❤️</div>
-        <h1>Ciao scema,<br>una sorpresa per te</h1>
+        <h1>Ciao scema,<br>ho una sorpresa per te</h1>
         <button class="btn" onclick="nextSlide(1)">Iniziamo? ➔</button>
     </div>
 
     <div id="image-slides"></div>
 
     <script>
-        // --- CONFIGURA QUI I TESTI ---
         const testi = [
-            "Testo per la foto 1",
-            "Testo per la foto 2",
-            "Testo per la foto 3",
-            "Testo per la foto 4",
-            "Testo per la foto 5",
-            "Testo per la foto 6",
-            "Testo per la foto 7",
-            "Testo per la foto 8"
+            "Forse la tua espressione ora è simile a quella di questo qui sopra. Giuro che è a metà tra carina e stupida. ",
+            "So che ci vediamo domani ma una gnokka del genere merita di più di un banale Tanti auguri alla 00:00 del suo compleanno 😌",
+            "Anche se sei una tipa misteriosa e lo so, il giorno del proprio compleanno è difficile",
+            "Spero che questa cagatina ti faccia un po sorridere (guarda che fregni che siamo)",
+            "Dai in realtà siamo carini 💖",
+            "Ora spero che la tua reazione sia più tipo così ​🔝​",
+            "...che così ​😰​",
+            "Tanti auguri sfigatella 🫶​",
+            "Oh no ho lasciato la fotocamera accesa 😱​ a domani baby <3"
         ];
 
-        const totalImages = 8;
+        const totalImages = 9;
         const container = document.getElementById('image-slides');
 
         for (let i = 1; i <= totalImages; i++) {
